@@ -717,20 +717,50 @@ section::after {
 }
 
 
-.photo-card p {
+.photo-info {
+    display: flex;
 
-    margin:
-        12px 5px 0;
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding:
+        13px 5px 3px;
+}
+
+
+.photo-info p {
+    margin: 0;
 
     font-family:
         "Parisienne",
         cursive;
 
-    font-size: 23px;
+    font-size: 22px;
 
     color: #47202d;
 }
 
+
+.photo-info span {
+    flex-shrink: 0;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+    color: #67434f;
+
+    opacity: 0.7;
+
+    white-space: nowrap;
+}
 
 /* =========================
    TIMELINE
