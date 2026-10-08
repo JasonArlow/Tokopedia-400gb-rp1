@@ -143,38 +143,35 @@ function playMusic() {
    START STORY
 ========================= */
 
-function startStory() {
+function startStory(){
+  sessionStorage.setItem("storyStarted","true");
+  document.body.classList.remove("story-locked");
 
-    sessionStorage.setItem(
-        "storyStarted",
-        "true"
-    );
+  if(music){
+    music.load();
+    music.currentTime = 0;
 
-    document.body.classList.remove(
-        "story-locked"
-    );
+    const playPromise = music.play();
 
-    if (music) {
-
-        music.currentTime = 0;
-
-        playMusic();
-
-    }
-
-    const intro =
-        document.querySelector(
-            ".intro-section"
-        );
-
-    if (intro) {
-
-        intro.scrollIntoView({
-            behavior: "smooth"
+    if(playPromise !== undefined){
+      playPromise
+        .then(() => {
+          if(musicButton) musicButton.textContent = "♫";
+          console.log("Music started");
+        })
+        .catch(error => {
+          console.error("Music failed to start:", error);
         });
-
     }
+  }
 
+  const intro=document.querySelector(".intro-section");
+
+  if(intro){
+    intro.scrollIntoView({
+      behavior:"smooth"
+    });
+  }
 }
 
 
