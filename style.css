@@ -1253,6 +1253,14 @@ body.blackout > * {
     visibility: hidden;
 }
 
+/* =========================
+   LOCK SCROLL BEFORE START
+========================= */
+
+body.story-locked {
+    overflow: hidden;
+    height: 100svh;
+}
 
 /* =========================
    MUSIC BUTTON

@@ -60,11 +60,112 @@ const music =
 const musicButton =
     document.getElementById("musicButton");
 
+let savedMusicTime =
+    parseFloat(
+        sessionStorage.getItem("musicTime")
+    ) || 0;
+
+
+/* =========================
+   RESTORE MUSIC POSITION
+========================= */
+
+if (music) {
+
+    music.addEventListener(
+        "loadedmetadata",
+        () => {
+
+            if (
+                savedMusicTime > 0 &&
+                savedMusicTime < music.duration
+            ) {
+
+                music.currentTime =
+                    savedMusicTime;
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================
+   SAVE MUSIC POSITION
+========================= */
+
+setInterval(() => {
+
+    if (
+        music &&
+        !music.paused &&
+        music.currentTime > 0
+    ) {
+
+        sessionStorage.setItem(
+            "musicTime",
+            music.currentTime
+        );
+
+    }
+
+}, 500);
+
+
+/* =========================
+   START MUSIC
+========================= */
+
+function playMusic() {
+
+    if (!music) return;
+
+    music.play().then(() => {
+
+        if (musicButton) {
+            musicButton.textContent = "♫";
+        }
+
+    }).catch(() => {
+
+        console.log(
+            "Autoplay blocked. Waiting for user interaction."
+        );
+
+    });
+
+}
+
+
+/* =========================
+   START STORY
+========================= */
 
 function startStory() {
 
+    sessionStorage.setItem(
+        "storyStarted",
+        "true"
+    );
+
+    document.body.classList.remove(
+        "story-locked"
+    );
+
+    if (music) {
+
+        music.currentTime = 0;
+
+        playMusic();
+
+    }
+
     const intro =
-        document.querySelector(".intro-section");
+        document.querySelector(
+            ".intro-section"
+        );
 
     if (intro) {
 
@@ -74,26 +175,20 @@ function startStory() {
 
     }
 
-    if (music) {
-
-        music.play().catch(() => {});
-
-    }
 }
 
+
+/* =========================
+   MUSIC BUTTON
+========================= */
 
 function toggleMusic() {
 
     if (!music) return;
 
-
     if (music.paused) {
 
-        music.play().catch(() => {});
-
-        if (musicButton) {
-            musicButton.textContent = "♫";
-        }
+        playMusic();
 
     } else {
 
@@ -104,6 +199,96 @@ function toggleMusic() {
         }
 
     }
+
+}
+
+
+/* =========================
+   AFTER RELOAD
+========================= */
+
+if (
+    sessionStorage.getItem(
+        "storyStarted"
+    ) === "true"
+) {
+
+    document.body.classList.remove(
+        "story-locked"
+    );
+
+
+    /*
+       Wait until audio metadata
+       is available.
+    */
+
+    if (music) {
+
+        music.addEventListener(
+            "loadedmetadata",
+            () => {
+
+                if (
+                    savedMusicTime > 0 &&
+                    savedMusicTime < music.duration
+                ) {
+
+                    music.currentTime =
+                        savedMusicTime;
+
+                }
+
+                playMusic();
+
+            },
+            { once: true }
+        );
+
+    }
+
+
+    /*
+       Browser fallback.
+       If autoplay is blocked,
+       first tap resumes the song.
+    */
+
+    const resumeAfterTap =
+        () => {
+
+            if (
+                music &&
+                music.paused
+            ) {
+
+                if (
+                    savedMusicTime > 0 &&
+                    savedMusicTime < music.duration
+                ) {
+
+                    music.currentTime =
+                        savedMusicTime;
+
+                }
+
+                playMusic();
+
+            }
+
+            document.removeEventListener(
+                "pointerdown",
+                resumeAfterTap
+            );
+
+        };
+
+
+    document.addEventListener(
+        "pointerdown",
+        resumeAfterTap
+    );
+
 }
 
 
@@ -113,17 +298,29 @@ function toggleMusic() {
 
 async function revealQuestion() {
 
-    /*
-       FIRST:
-       Show the final black screen
-       immediately.
-    */
-
     const blackScreen =
-        document.getElementById("blackScreen");
+        document.getElementById(
+            "blackScreen"
+        );
+
 
     if (!blackScreen) return;
 
+
+    /*
+       STOP MUSIC
+    */
+
+    if (music) {
+
+        music.pause();
+
+    }
+
+
+    /*
+       SHOW FINAL BLACK SCREEN
+    */
 
     document.body.classList.add(
         "final-black"
@@ -134,12 +331,14 @@ async function revealQuestion() {
         "flex";
 
 
-    window.scrollTo(0, 0);
+    window.scrollTo(
+        0,
+        0
+    );
 
 
     /*
-       THEN:
-       Send event to Firebase.
+       SEND EVENT TO FIREBASE
     */
 
     const statusRef =
@@ -179,6 +378,7 @@ async function revealQuestion() {
         );
 
     }
+
 }
 
 
