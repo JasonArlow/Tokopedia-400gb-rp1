@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Our Story ♡</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&family=Parisienne&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- MUSIC BUTTON -->
+
+    <div
+        id="musicButton"
+        class="music-button"
+        onclick="toggleMusic()"
+    >
+        ♫
+    </div>
+
+
+    <audio
+        id="backgroundMusic"
+        loop
+    >
+
+        <source
+            src="music.mp3"
+            type="audio/mpeg"
+        >
+
+    </audio>
+
+
+    <main>
+
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="hero">
+
+            <div class="stars"></div>
+
+            <div class="hero-content">
+
+                <p class="small-text">
+                    A little story about us
+                </p>
+
+
+                <h1>
+                    Our
+                    <br>
+                    <span>Story</span>
+                </h1>
+
+
+                <p class="hero-description">
+                    Before I ask you something,
+                    I want to take you back
+                    to the beginning.
+                </p>
+
+
+                <button
+                    class="start-button"
+                    onclick="startStory()"
+                >
+
+                    Start our story
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <div class="scroll-hint">
+                ↓
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             BEGINNING
+        ========================== -->
+
+        <section
+            class="story-section intro-section"
+        >
+
+            <div class="chapter-number">
+                01
+            </div>
+
+
+            <div class="story-content">
+
+                <p class="chapter-label">
+                    THE BEGINNING
+                </p>
+
+
+                <h2>
+                    It all started
+                    <br>
+                    <em>with you.</em>
+                </h2>
+
+
+                <p class="story-text">
+                    Maybe at the time,
+                    neither of us knew
+                    how important this
+                    story would become.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FIRST MEMORY
+        ========================== -->
+
+        <section class="memory-section">
+
+            <div class="memory-image">
+
+                <img
+                    src="images/photo1.jpg"
+                    alt="Our first memory"
+                >
+
+            </div>
+
+
+            <div class="memory-text">
+
+                <p class="chapter-label">
+                    THE FIRST MEMORY
+                </p>
+
+
+                <h2>
+                    The moment
+                    <br>
+                    <em>it began.</em>
+                </h2>
+
+
+                <p>
+                    This is where we can
+                    put the story about
+                    how we first met and
+                    started getting closer.
+                </p>
+
+
+                <span class="date">
+                    00 · 00 · 0000
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             GALLERY
+        ========================== -->
+
+        <section class="gallery-section">
+
+            <div class="section-heading">
+
+                <p class="chapter-label">
+                    LITTLE MOMENTS
+                </p>
+
+
+                <h2>
+                    Somehow,
+                    <br>
+                    we became
+                    <em>us.</em>
+                </h2>
+
+
+                <p>
+                    The little moments
+                    that slowly became
+                    some of my favorite
+                    memories.
+                </p>
+
+            </div>
+
+
+            <div class="gallery">
+
+
+                <div class="photo-card card-1">
+
+                    <img
+                        src="images/photo2.jpg"
+                        alt="Memory"
+                    >
+
+                    <p>
+                        Our first memory
+                    </p>
+
+                </div>
+
+
+                <div class="photo-card card-2">
+
+                    <img
+                        src="images/photo3.jpg"
+                        alt="Memory"
+                    >
+
+                    <p>
+                        A random day
+                    </p>
+
+                </div>
+
+
+                <div class="photo-card card-3">
+
+                    <img
+                        src="images/photo4.jpg"
+                        alt="Memory"
+                    >
+
+                    <p>
+                        One of my favorites
+                    </p>
+
+                </div>
+
+
+                <div class="photo-card card-4">
+
+                    <img
+                        src="images/photo5.jpg"
+                        alt="Memory"
+                    >
+
+                    <p>
+                        Just us
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TIMELINE
+        ========================== -->
+
+        <section class="timeline-section">
+
+            <p class="chapter-label">
+                OUR JOURNEY
+            </p>
+
+
+            <h2>
+                Look how far
+                <br>
+                we've
+                <em>come.</em>
+            </h2>
+
+
+            <div class="timeline">
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot"></div>
+
+
+                    <div class="timeline-content">
+
+                        <span>
+                            00 · 00 · 0000
+                        </span>
+
+
+                        <h3>
+                            The beginning
+                        </h3>
+
+
+                        <p>
+                            The story begins here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot"></div>
+
+
+                    <div class="timeline-content">
+
+                        <span>
+                            00 · 00 · 0000
+                        </span>
+
+
+                        <h3>
+                            Getting closer
+                        </h3>
+
+
+                        <p>
+                            Somewhere along
+                            the way, things
+                            started to feel
+                            different.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot"></div>
+
+
+                    <div class="timeline-content">
+
+                        <span>
+                            00 · 00 · 0000
+                        </span>
+
+
+                        <h3>
+                            My favorite memories
+                        </h3>
+
+
+                        <p>
+                            All those little
+                            moments that I
+                            never want to forget.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot"></div>
+
+
+                    <div class="timeline-content">
+
+                        <span>
+                            NOW
+                        </span>
+
+
+                        <h3>
+                            Today
+                        </h3>
+
+
+                        <p>
+                            And somehow,
+                            we're here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             LOVE LETTER
+        ========================== -->
+
+        <section class="letter-section">
+
+            <div class="letter">
+
+                <p class="chapter-label">
+                    A LITTLE CONFESSION
+                </p>
+
+
+                <h2>
+                    Somewhere along
+                    <br>
+                    the way...
+                </h2>
+
+
+                <p class="letter-text">
+                    I don't remember exactly
+                    when it happened.
+                    Maybe it was one
+                    conversation.
+                    Maybe it was one smile.
+                    Maybe it was all the
+                    little things you
+                    probably never realized.
+                </p>
+
+
+                <p class="letter-text">
+                    But somewhere between
+                    all those moments,
+                    I realized that you
+                    had become someone
+                    very special to me.
+                </p>
+
+
+                <p class="signature">
+                    — Me ♡
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FINAL MOMENT
+        ========================== -->
+
+        <section
+            class="question-section"
+            id="openSection"
+        >
+
+            <div class="question-content">
+
+                <p class="chapter-label">
+                    ONE LAST THING
+                </p>
+
+
+                <h2>
+                    And now...
+                </h2>
+
+
+                <p class="question-text">
+                    There's something
+                    I want you to see.
+                </p>
+
+
+                <button
+                    class="reveal-button"
+                    onclick="revealQuestion()"
+                >
+                    Open it ♡
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             BLACK SCREEN
+        ========================== -->
+
+        <section
+            id="blackScreen"
+            class="black-screen"
+        >
+
+            <div class="black-message">
+                ♡
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FIREBASE JAVASCRIPT -->
+
+    <script
+        type="module"
+        src="./script.js"
+    ></script>
+
+    </body>
+    </html>
+
+
+</body>
+
+</html>
